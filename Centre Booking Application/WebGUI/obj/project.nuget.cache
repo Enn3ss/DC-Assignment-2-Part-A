@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "IYuyq1CCPbr2enD806lCDGTJ0OUG08/4stsdIsyMYSEAIzIcY76p7SXcF82z/f0xYIbJIxijixTqpMav9K2LLw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Nathan Sutandi\\Documents\\GitHub\\DC-Assignment-2-Part-A\\Centre Booking Application\\WebGUI\\WebGUI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Nathan Sutandi\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\Nathan Sutandi\\.nuget\\packages\\restsharp\\108.0.2\\restsharp.108.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}

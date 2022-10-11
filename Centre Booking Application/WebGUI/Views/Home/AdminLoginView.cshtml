@@ -1,0 +1,33 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div id="adminLoginDiv">
+    <p>Admins can login. General users do not need to log in.</p>
+    <input type="text" id="Username" name="Username" placeholder="Username" />
+    <input type="text" id="Password" name="Password" placeholder="Password" />
+    <button onclick="adminLogin()">Login</button>
+</div>
+
+<script>
+    function adminLogin()
+    {
+        $.ajax(
+            {
+                url: '/home/adminlogin/?username=' + $('#Username').val() + '&password=' + $('#Password').val(),
+                type: 'get',
+                contentType: 'application/json',
+                processData: false,
+                success: function (data, textStatus, jQxhr) 
+                {
+                    alert("Admin login successful!");
+                },
+                error: function (jqXhr, textStatus, errorThrown) 
+                {
+                    alert("Admin login unsuccessful. You may have been logged out!");
+                    console.log(errorThrown);
+                } 
+            })
+    }
+</script>

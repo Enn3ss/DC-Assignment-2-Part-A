@@ -1,0 +1,52 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = WebGUI
+build_property.RootNamespace = WebGUI
+build_property.ProjectDir = C:\Users\Nathan Sutandi\Documents\GitHub\DC-Assignment-2-Part-A\Centre Booking Application\WebGUI\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Nathan Sutandi\Documents\GitHub\DC-Assignment-2-Part-A\Centre Booking Application\WebGUI
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Nathan Sutandi/Documents/GitHub/DC-Assignment-2-Part-A/Centre Booking Application/WebGUI/Views/Home/AdminLoginView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pbkxvZ2luVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Nathan Sutandi/Documents/GitHub/DC-Assignment-2-Part-A/Centre Booking Application/WebGUI/Views/Home/AllCentresView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBbGxDZW50cmVzVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Nathan Sutandi/Documents/GitHub/DC-Assignment-2-Part-A/Centre Booking Application/WebGUI/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Nathan Sutandi/Documents/GitHub/DC-Assignment-2-Part-A/Centre Booking Application/WebGUI/Views/Home/InsertBookingView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbnNlcnRCb29raW5nVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Nathan Sutandi/Documents/GitHub/DC-Assignment-2-Part-A/Centre Booking Application/WebGUI/Views/Home/InsertCentreView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbnNlcnRDZW50cmVWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Nathan Sutandi/Documents/GitHub/DC-Assignment-2-Part-A/Centre Booking Application/WebGUI/Views/Home/SearchCentres.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZWFyY2hDZW50cmVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Nathan Sutandi/Documents/GitHub/DC-Assignment-2-Part-A/Centre Booking Application/WebGUI/Views/Home/SearchCentresView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZWFyY2hDZW50cmVzVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Nathan Sutandi/Documents/GitHub/DC-Assignment-2-Part-A/Centre Booking Application/WebGUI/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Nathan Sutandi/Documents/GitHub/DC-Assignment-2-Part-A/Centre Booking Application/WebGUI/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

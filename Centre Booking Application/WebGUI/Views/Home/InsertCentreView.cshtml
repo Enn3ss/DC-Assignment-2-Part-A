@@ -1,0 +1,39 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div id="insertCentreDiv">
+    <p>Add centre names to the centre list as an admin (not for general users).</p>
+    <input type="text" id="CentreId" name="CentreId" placeholder="Centre ID" />
+    <input type="text" id="CentreName" name="CentreName" placeholder="Centre Name" />
+    <button onclick="insertCentre()">Insert</button>
+</div>
+
+<script>
+    function insertCentre() 
+    {
+        $.ajax(
+            {
+                type: 'POST',
+                url: '/home/insertcentre',
+                contentType: 'application/json',
+                data: JSON.stringify(
+                    {
+                        "Id": $("#CentreId").val(),
+                        "CentreName": $("#CentreName").val()
+                    }),
+                success: function (data, textStatus, jQxhr) 
+                {
+                    alert("Centre has been inserted.");
+                },
+                error: function (xhr, textStatus, error) 
+                {
+                    alert("You are not an admin! Centre has not been inserted.");
+                    console.log(xhr.statusText);
+                    console.log(textStatus);
+                    console.log(error);
+                }
+            })
+    }
+</script>

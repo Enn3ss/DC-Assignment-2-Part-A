@@ -1,0 +1,45 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div id="insertBookingDiv">
+    <p>Add bookings to the bookings list as a general user (not for admins).</p>
+    <input type="text" id="Id" name="Id" placeholder="ID" />
+    <input type="text" id="CustomerName" name="CustomerName" placeholder="Customer Name" />
+    <input type="text" id="CentreName" name="CentreName" placeholder="Centre Name" />
+    <input type="date" id="StartDate" name="StartDate" placeholder="Start Date" />
+    <input type="date" id="EndDate" name="EndDate" placeholder="End Date" />
+    <button onclick="insertBooking()">Insert</button>
+</div>
+
+<script>
+    function insertBooking() 
+    {
+        $.ajax(
+            {
+                type: 'POST',
+                url: '/home/insertbooking',
+                contentType: 'application/json',
+                data: JSON.stringify(
+                    {
+                        "Id": $("#Id").val(),
+                        "CustomerName" : $("#CustomerName").val(),
+                        "CentreName": $("#CentreName").val(),
+                        "StartDate": $("#StartDate").val(),
+                        "EndDate": $("#EndDate").val()
+                    }),
+                success: function (data, textStatus, jQxhr) 
+                {
+                    alert("Booking has been inserted.");
+                },
+                error: function (xhr, textStatus, error) 
+                {
+                    alert("Booking has encountered an error.");
+                    console.log(xhr.statusText);
+                    console.log(textStatus);
+                    console.log(error);
+                }
+            })
+    }
+</script>

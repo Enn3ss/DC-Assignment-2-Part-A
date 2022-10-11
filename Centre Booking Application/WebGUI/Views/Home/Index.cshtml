@@ -1,0 +1,123 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    @using WebGUI.Models;
+    @model IEnumerable<Centre>;
+}
+<h1>Welcome to the Centre Booking Application</h1>
+
+<div id="viewDiv">
+    <button onclick="adminLoginView()">Admin Login</button>
+    <button onclick="allCentresView()">View</button>
+    <button onclick="insertCentreView()">Add Centre</button>
+    <button onclick="insertBookingView()">Add Booking</button>
+    <button onclick="searchCentresView()">Search Centres</button>
+</div>
+
+<div class="content"></div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script>
+    function adminLoginView()
+    {
+        $.ajax(
+            {
+                url: '/home/adminloginview',
+                type: 'get',
+                processData: false,
+                success: function (data, textStatus, jQxhr) 
+                {
+                    $(".content").html(data);
+                },
+                error: function (jqXhr, textStatus, errorThrown) 
+                {
+                    console.log(errorThrown);
+                }
+            })
+    }
+    
+    function allCentresView() 
+    {
+        $.ajax(
+            {
+                url: '/home/allcentresview',
+                type: 'get',
+                processData: false,
+                success: function (data, textStatus, jQxhr) 
+                {
+                    $(".content").html(data);
+                },
+                error: function (jqXhr, textStatus, errorThrown) 
+                {
+                    console.log(errorThrown);
+                }
+            })
+    }
+
+    function insertCentreView() 
+    {
+        $.ajax(
+            {
+                url: '/home/insertcentreview',
+                type: 'get',
+                processData: false,
+                success: function (data, textStatus, jQxhr) 
+                {
+                    $(".content").html(data);
+                },
+                error: function (jqXhr, textStatus, errorThrown) 
+                {
+                    console.log(errorThrown);
+                }
+            })
+    }
+
+    function insertBookingView() 
+    {
+        $.ajax(
+            {
+                url: '/home/insertbookingview',
+                type: 'get',
+                processData: false,
+                success: function (data, textStatus, jQxhr) 
+                {
+                    $(".content").html(data);
+                },
+                error: function (jqXhr, textStatus, errorThrown) 
+                {
+                    console.log(errorThrown);
+                }
+            })
+    }
+
+    function searchCentresView() 
+    {
+        $.ajax(
+            {
+                url: '/home/searchcentresview',
+                type: 'get',
+                processData: false,
+                success: function (data, textStatus, jQxhr) 
+                {
+                    $(".content").html(data);
+                },
+                error: function (jqXhr, textStatus, errorThrown) 
+                {
+                    console.log(errorThrown);
+                }
+            })
+    }
+
+    function refreshCentres()
+    {
+        location.reload();
+        return false;
+    }
+
+    function test()
+    {
+        alert("TEST");
+    }
+</script>

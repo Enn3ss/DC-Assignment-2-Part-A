@@ -1,0 +1,22 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+    <button onclick="refreshCentres()">Refresh View</button>
+*@
+@{
+    @using WebGUI.Models;
+    @model IEnumerable<Centre>;
+}
+<div id="allCentresDiv">
+    <p>View centre list as admin and general user.</p>
+    <table>
+
+        @foreach (var centre in Model)
+        {
+            <tr onclick="test()">
+                <td>@centre.Id</td>
+                <td>@centre.CentreName</td>
+            </tr>
+        }
+    </table>
+    
+</div>
