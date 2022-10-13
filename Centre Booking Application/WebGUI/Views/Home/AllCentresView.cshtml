@@ -7,12 +7,12 @@
     @model IEnumerable<Centre>;
 }
 <div id="allCentresDiv">
-    <p>View centre list as admin and general user.</p>
+    <p>View list of centres as admin and general user.</p>
     <table>
 
         @foreach (var centre in Model)
         {
-            <tr onclick="test()">
+            <tr>
                 <td>@centre.Id</td>
                 <td>@centre.CentreName</td>
             </tr>

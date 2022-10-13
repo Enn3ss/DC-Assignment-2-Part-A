@@ -3,18 +3,18 @@
 *@
 @{
 }
-<div id="searchCentresDiv">
-    <p>Search for centres in the centre list (partial string match allowed) as a general user (not for admins). Input is case-sensitive.</p>
+<div id="searchBookingsDiv">
+    <p>Search for bookings for a given centre (complete string match only) as an admin (not for general users). Input is case-sensitive.</p>
     <input type="text" id="CentreName" name="CentreName" placeholder="Centre Name" />
-    <button onclick="searchCentres()">Search</button>
+    <button onclick="searchBookings()">Search</button>
 </div>
 
 <script>
-    function searchCentres() 
+    function searchBookings() 
     {
         $.ajax(
             {
-                url: '/home/searchcentres/?centrename=' + $('#CentreName').val(),
+                url: '/home/searchbookings/?centrename=' + $('#CentreName').val(),
                 type: 'get',
                 contentType: 'application/json',
                 processData: false,
@@ -24,7 +24,7 @@
                 },
                 error: function (jqXhr, textStatus, errorThrown) 
                 {
-                    alert("Error! You may not be a general user or we cannot find your centre.");
+                    alert("Error! You may not be an admin or we cannot find your centre.");
                     console.log(errorThrown);
                 }
             })

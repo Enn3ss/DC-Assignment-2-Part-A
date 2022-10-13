@@ -9,10 +9,13 @@
 
 <div id="viewDiv">
     <button onclick="adminLoginView()">Admin Login</button>
-    <button onclick="allCentresView()">View</button>
+    <button onclick="allCentresView()">View Centres</button>
     <button onclick="insertCentreView()">Add Centre</button>
     <button onclick="insertBookingView()">Add Booking</button>
     <button onclick="searchCentresView()">Search Centres</button>
+    <button onclick="searchBookingsView()">Search Bookings</button>
+    <button onclick="nextAvailableStartDateView()">Next Available Start Date</button>
+
 </div>
 
 <div class="content"></div>
@@ -110,14 +113,45 @@
             })
     }
 
+    function searchBookingsView() 
+    {
+        $.ajax(
+            {
+                url: '/home/searchbookingsview',
+                type: 'get',
+                processData: false,
+                success: function (data, textStatus, jQxhr) 
+                {
+                    $(".content").html(data);
+                },
+                error: function (jqXhr, textStatus, errorThrown) 
+                {
+                    console.log(errorThrown);
+                }
+            })
+    }
+
+    function nextAvailableStartDateView() 
+    {
+        $.ajax(
+            {
+                url: '/home/nextavailablestartdateview',
+                type: 'get',
+                processData: false,
+                success: function (data, textStatus, jQxhr) 
+                {
+                    $(".content").html(data);
+                },
+                error: function (jqXhr, textStatus, errorThrown) 
+                {
+                    console.log(errorThrown);
+                }
+            })
+    }
+
     function refreshCentres()
     {
         location.reload();
         return false;
-    }
-
-    function test()
-    {
-        alert("TEST");
     }
 </script>

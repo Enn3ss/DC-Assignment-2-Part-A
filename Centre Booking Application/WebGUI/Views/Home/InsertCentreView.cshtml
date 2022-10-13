@@ -4,7 +4,7 @@
 @{
 }
 <div id="insertCentreDiv">
-    <p>Add centre names to the centre list as an admin (not for general users).</p>
+    <p>Add a centre to the centre list as an admin (not for general users).</p>
     <input type="text" id="CentreId" name="CentreId" placeholder="Centre ID" />
     <input type="text" id="CentreName" name="CentreName" placeholder="Centre Name" />
     <button onclick="insertCentre()">Insert</button>
@@ -29,7 +29,7 @@
                 },
                 error: function (xhr, textStatus, error) 
                 {
-                    alert("You are not an admin! Centre has not been inserted.");
+                    alert("Error in adding centre! You may not be an admin or the Centre ID may be invalid.");
                     console.log(xhr.statusText);
                     console.log(textStatus);
                     console.log(error);

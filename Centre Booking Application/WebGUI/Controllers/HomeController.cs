@@ -73,8 +73,41 @@ namespace WebGUI.Controllers
             {
                 return BadRequest();
             }
+            else if(newBooking.CustomerName == null || newBooking.CustomerName.Length == 0) // Booking must be under a name
+            {
+                return BadRequest();
+            }
 
+            /* Getting list of centres to check */
             RestClient client = new RestClient("http://localhost:49961/");
+            RestRequest request = new RestRequest("api/Centres", Method.Get);
+            RestResponse response = client.Execute(request);
+
+            List<Centre> centres = JsonConvert.DeserializeObject<List<Centre>>(response.Content);
+
+            if (centres == null)
+            {
+                return BadRequest(); // Return if no centres exist
+            }
+            else
+            {
+                bool doesCentreExist = false;
+
+                foreach (Centre centre in centres)
+                {
+                    if(newBooking.CentreName.Equals(centre.CentreName))
+                    {
+                        doesCentreExist = true;
+                    }
+                }
+
+                if(!doesCentreExist)
+                {
+                    return BadRequest(); // Return is centre cannot be foudn
+                }
+            }
+
+            /* Getting list of bookings to check */
             RestRequest getRequest = new RestRequest("api/Bookings", Method.Get);
             RestResponse getResponse = client.Execute(getRequest);
 
@@ -84,7 +117,7 @@ namespace WebGUI.Controllers
             {
                 foreach (Booking booking in bookings)
                 {
-                    if(booking.CentreName.Equals(newBooking.CentreName))
+                    if(booking.CentreName.Equals(newBooking.CentreName)) // Return if date conflicts exist
                     {
                         if((newBooking.StartDate >= booking.StartDate && newBooking.StartDate <= booking.EndDate) ||
                            (newBooking.EndDate >= booking.StartDate && newBooking.EndDate <= booking.EndDate))
@@ -135,13 +168,100 @@ namespace WebGUI.Controllers
 
                 foreach (Centre centre in centres)
                 {
-                    if (centre.CentreName.Contains(centreName))
+                    if (centre.CentreName.Contains(centreName)) // Partial string match
                     {
                         matchingCentres.Add(centre);
                     }
                 }
 
                 return View(matchingCentres);
+            }
+        }
+
+        [HttpGet]
+        public IActionResult SearchBookings(string centreName)
+        {
+            if (!isAdmin) // Only admins can search bookings
+            {
+                return Unauthorized();
+            }
+
+            RestClient client = new RestClient("http://localhost:49961/");
+            RestRequest request = new RestRequest("api/Bookings", Method.Get);
+            RestResponse response = client.Execute(request);
+
+            List<Booking> bookings = JsonConvert.DeserializeObject<List<Booking>>(response.Content);
+
+            if(bookings == null)
+            {
+                return BadRequest();
+            }
+            else
+            {
+                List<Booking> matchingBookings = new List<Booking>();
+
+                foreach (Booking booking in bookings)
+                {
+                    if (booking.CentreName.Equals(centreName)) // Complete string match
+                    {
+                        matchingBookings.Add(booking);
+                    }
+                }
+
+                matchingBookings = matchingBookings.OrderBy(x => x.StartDate).ToList();
+
+                return View(matchingBookings);
+            }
+        }
+
+        [HttpGet]
+        public IActionResult NextAvailableStartDate(string centreName)
+        {
+            if (isAdmin) // Only general users can get the next available start date for a centre
+            {
+                return Unauthorized();
+            }
+
+            RestClient client = new RestClient("http://localhost:49961/");
+            RestRequest request = new RestRequest("api/Bookings", Method.Get);
+            RestResponse response = client.Execute(request);
+
+            List<Booking> bookings = JsonConvert.DeserializeObject<List<Booking>>(response.Content);
+
+            if (bookings == null)
+            {
+                return BadRequest();
+            }
+            else
+            {
+                List<Booking> matchingBookings = new List<Booking>();
+
+                foreach (Booking booking in bookings)
+                {
+                    if (booking.CentreName.Equals(centreName)) // Complete string match
+                    {
+                        matchingBookings.Add(booking);
+                    }
+                }
+
+                matchingBookings = matchingBookings.OrderBy(x => x.StartDate).ToList();
+
+                DateTime currDate = DateTime.Today;
+
+                foreach (Booking booking in matchingBookings)
+                {
+                    if(currDate.Date < booking.StartDate)
+                    {
+                        return Ok(currDate);
+                    }
+                    else
+                    {
+                        currDate = (DateTime)booking.EndDate;
+                        currDate = currDate.AddDays(1);
+                    }
+                }
+
+                return Ok(currDate);
             }
         }
 
@@ -172,6 +292,16 @@ namespace WebGUI.Controllers
         }
 
         public IActionResult SearchCentresView()
+        {
+            return View();
+        }
+
+        public IActionResult SearchBookingsView()
+        {
+            return View();
+        }
+
+        public IActionResult NextAvailableStartDateView()
         {
             return View();
         }

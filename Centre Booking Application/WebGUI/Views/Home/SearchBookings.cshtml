@@ -1,0 +1,24 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    @using WebGUI.Models;
+    @model IEnumerable<Booking>;
+}
+<div id="bookingsResultDiv">
+    <p>Search bookings result.</p>
+    <table>
+
+        @foreach (var booking in Model)
+        {
+            <tr>
+                <td>@booking.Id</td>
+                <td>@booking.CustomerName</td>
+                <td>@booking.CentreName</td>
+                <td>@booking.StartDate</td>
+                <td>@booking.EndDate</td>
+            </tr>
+        }
+    </table>
+
+</div>

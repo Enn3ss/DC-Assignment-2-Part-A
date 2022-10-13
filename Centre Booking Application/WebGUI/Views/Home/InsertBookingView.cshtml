@@ -4,7 +4,7 @@
 @{
 }
 <div id="insertBookingDiv">
-    <p>Add bookings to the bookings list as a general user (not for admins).</p>
+    <p>Add a booking to the bookings list as a general user (not for admins).</p>
     <input type="text" id="Id" name="Id" placeholder="ID" />
     <input type="text" id="CustomerName" name="CustomerName" placeholder="Customer Name" />
     <input type="text" id="CentreName" name="CentreName" placeholder="Centre Name" />
@@ -31,11 +31,11 @@
                     }),
                 success: function (data, textStatus, jQxhr) 
                 {
-                    alert("Booking has been inserted.");
+                    alert("Booking has been added!");
                 },
                 error: function (xhr, textStatus, error) 
                 {
-                    alert("Booking has encountered an error.");
+                    alert("Error in adding booking! You may not be a general user or the ID/Centre Name/Start Date/End Date may be invalid.");
                     console.log(xhr.statusText);
                     console.log(textStatus);
                     console.log(error);

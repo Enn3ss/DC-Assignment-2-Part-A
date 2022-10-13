@@ -3,28 +3,30 @@
 *@
 @{
 }
-<div id="searchCentresDiv">
-    <p>Search for centres in the centre list (partial string match allowed) as a general user (not for admins). Input is case-sensitive.</p>
+<div id="nextAvailableStartDateDiv">
+    <p>Find the next available start date for a centre (complete string match only) as a general user (not for admins). Input is case-sensitive.</p>
     <input type="text" id="CentreName" name="CentreName" placeholder="Centre Name" />
     <button onclick="searchCentres()">Search</button>
 </div>
+
+<div class="date"></div>
 
 <script>
     function searchCentres() 
     {
         $.ajax(
             {
-                url: '/home/searchcentres/?centrename=' + $('#CentreName').val(),
+                url: '/home/nextavailablestartdate/?centrename=' + $('#CentreName').val(),
                 type: 'get',
                 contentType: 'application/json',
                 processData: false,
                 success: function (data, textStatus, jQxhr) 
                 {
-                    $(".content").html(data);
+                    $(".date").html(data);
                 },
                 error: function (jqXhr, textStatus, errorThrown) 
                 {
-                    alert("Error! You may not be a general user or we cannot find your centre.");
+                    alert("Error! You may not be a general user.");
                     console.log(errorThrown);
                 }
             })
